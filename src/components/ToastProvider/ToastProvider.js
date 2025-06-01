@@ -48,3 +48,12 @@ function ToastProvider({ children }) {
 }
 
 export default ToastProvider;
+
+
+export function useToast() {
+  const context = React.useContext(ToastContext)
+  if(context === undefined) {
+    throw new Error('useToast should be used inside an ToastProvider')
+  }
+  return context
+}
